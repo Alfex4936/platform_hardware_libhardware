@@ -44,7 +44,8 @@ typedef enum {
      * KLP.
      */
     POWER_HINT_VIDEO_ENCODE = 0x00000003,
-    POWER_HINT_VIDEO_DECODE = 0x00000004
+    POWER_HINT_VIDEO_DECODE = 0x00000004,
+    POWER_HINT_CPU_BOOST = 0x00000010
 } power_hint_t;
 
 /**
@@ -104,6 +105,12 @@ typedef struct power_module {
      *     to raise speeds of CPU, memory bus, etc.  The data parameter is
      *     non-zero to indicate VSYNC pulse is now requested, or zero for
      *     VSYNC pulse no longer requested.
+     *
+     * POWER_HINT_CPU_BOOST
+     *
+     *     An operation is happening where it would be ideal for the CPU to
+     *     be boosted for a specific duration. The data parameter is an
+     *     integer value of the boost duration in microseconds.
      *
      * POWER_HINT_INTERACTION
      *
